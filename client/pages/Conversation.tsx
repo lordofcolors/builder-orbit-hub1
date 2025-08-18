@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import EmojiExpander from "@/components/EmojiExpander";
+import InputToggle from "@/components/InputToggle";
 import {
   Monitor,
   X,
@@ -20,9 +20,15 @@ interface TranscriptMessage {
   timestamp: string;
 }
 
+interface Reaction {
+  id: string;
+  emoji: string;
+  timestamp: string;
+}
+
 export default function Conversation() {
   const [transcriptExpanded, setTranscriptExpanded] = useState(false);
-  const [inputMessage, setInputMessage] = useState("");
+  const [reactions, setReactions] = useState<Reaction[]>([]);
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([
     {
       id: "1",
@@ -56,21 +62,23 @@ export default function Conversation() {
     }
   ]);
 
-  const sendMessage = () => {
-    if (inputMessage.trim()) {
-      const newMessage: TranscriptMessage = {
-        id: Date.now().toString(),
-        type: "user",
-        content: inputMessage,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-      setTranscript([...transcript, newMessage]);
-      setInputMessage("");
-    }
+  const handleMessageSend = (message: string) => {
+    const newMessage: TranscriptMessage = {
+      id: Date.now().toString(),
+      type: "user",
+      content: message,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    setTranscript([...transcript, newMessage]);
   };
 
-  const handleEmojiSelect = (emoji: string) => {
-    setInputMessage(prev => prev + emoji);
+  const handleReaction = (emoji: string) => {
+    const newReaction: Reaction = {
+      id: Date.now().toString(),
+      emoji: emoji,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    setReactions([...reactions, newReaction]);
   };
 
   return (
@@ -166,6 +174,25 @@ export default function Conversation() {
                       </div>
                     </div>
                   ))}
+
+                  {/* Show recent reactions */}
+                  {reactions.length > 0 && (
+                    <div className="flex gap-2 mt-4">
+                      <div className="text-xs text-app-muted font-mono w-16 flex-shrink-0 pt-1">
+                        {reactions[reactions.length - 1]?.timestamp.split(' ')[0]}
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm">
+                          <span className="font-medium text-app-user">Your Reaction:</span>
+                        </div>
+                        <div className="flex gap-1 mt-1">
+                          {reactions.slice(-3).map((reaction) => (
+                            <span key={reaction.id} className="text-lg">{reaction.emoji}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
@@ -181,30 +208,11 @@ export default function Conversation() {
         </div>
       </div>
 
-      {/* Input Area */}
-      <div className="flex justify-center mb-6 px-4">
-        <div className="flex gap-2 w-full max-w-[600px]">
-          {/* Emoji Expander */}
-          <EmojiExpander onEmojiSelect={handleEmojiSelect} />
-
-          {/* Input Field */}
-          <Input
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            placeholder="Type something here"
-            className="flex-1 bg-app-bg border-app-border text-app-text placeholder:text-app-muted"
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-          />
-
-          {/* Send Button */}
-          <Button
-            onClick={sendMessage}
-            className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
+      {/* Input Toggle Area */}
+      <InputToggle
+        onMessageSend={handleMessageSend}
+        onReaction={handleReaction}
+      />
 
       {/* Control Buttons */}
       <div className="flex justify-center gap-4 sm:gap-8 pb-8 px-4">
