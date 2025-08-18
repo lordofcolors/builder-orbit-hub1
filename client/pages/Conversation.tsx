@@ -61,8 +61,8 @@ export default function Conversation() {
       <div className="flex justify-center py-6">
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
-          <div className="relative w-44 h-44 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
-            <span className="text-5xl font-bold text-app-primary-dark">a</span>
+          <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
+            <span className="text-3xl sm:text-4xl font-bold text-app-primary-dark">a</span>
           </div>
         </div>
       </div>
