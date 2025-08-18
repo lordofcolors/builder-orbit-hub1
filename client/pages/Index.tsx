@@ -14,8 +14,12 @@ export default function Index() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-xl opacity-50 animate-pulse"></div>
 
             {/* Agent avatar */}
-            <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
-              <span className="text-2xl sm:text-3xl font-bold text-app-primary-dark">a</span>
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F6df9d4a454bc49c3b0edaf51e9faa427?format=webp&width=800"
+                alt="Voice Agent Avatar"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
