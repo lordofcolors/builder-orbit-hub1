@@ -143,7 +143,6 @@ export default function Conversation() {
               <div className="h-full flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-medium text-app-text">Live Transcript</h3>
-                  <span className="text-xs text-app-muted">Click to collapse</span>
                 </div>
                 <div className="flex-1 overflow-y-auto space-y-3 pr-2">
                   {transcript.map((message) => (
