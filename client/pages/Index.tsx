@@ -14,8 +14,8 @@ export default function Index() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-xl opacity-50 animate-pulse"></div>
 
             {/* Agent avatar */}
-            <div className="relative w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
-              <span className="text-4xl sm:text-6xl font-bold text-app-primary-dark">a</span>
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
+              <span className="text-2xl sm:text-3xl font-bold text-app-primary-dark">a</span>
             </div>
           </div>
         </div>
