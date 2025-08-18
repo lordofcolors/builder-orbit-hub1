@@ -188,15 +188,6 @@ export default function Conversation() {
       {/* Input Area */}
       <div className="flex justify-center mb-6 px-4">
         <div className="flex gap-2 w-full max-w-[600px]">
-          {/* Expand/Collapse Button */}
-          <Button
-            onClick={() => setTranscriptExpanded(!transcriptExpanded)}
-            size="sm"
-            className="w-8 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20"
-          >
-            {transcriptExpanded ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-          </Button>
-
           {/* Emoji Keyboard */}
           <EmojiKeyboard onEmojiSelect={handleEmojiSelect} />
 
