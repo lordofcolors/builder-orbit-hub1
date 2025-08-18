@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Monitor, 
-  X, 
-  Camera, 
-  Minus, 
+import EmojiKeyboard from "@/components/EmojiKeyboard";
+import {
+  Monitor,
+  X,
+  Camera,
+  Minus,
   Plus,
   Maximize,
   Send
@@ -48,6 +49,10 @@ export default function Conversation() {
       setTranscript([...transcript, newMessage]);
       setInputMessage("");
     }
+  };
+
+  const handleEmojiSelect = (emoji: string) => {
+    setInputMessage(prev => prev + emoji);
   };
 
   return (
@@ -127,7 +132,10 @@ export default function Conversation() {
           >
             {transcriptExpanded ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           </Button>
-          
+
+          {/* Emoji Keyboard */}
+          <EmojiKeyboard onEmojiSelect={handleEmojiSelect} />
+
           {/* Input Field */}
           <Input
             value={inputMessage}
@@ -136,9 +144,9 @@ export default function Conversation() {
             className="flex-1 bg-app-bg border-app-border text-app-text placeholder:text-app-muted"
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
           />
-          
+
           {/* Send Button */}
-          <Button 
+          <Button
             onClick={sendMessage}
             className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90"
           >
