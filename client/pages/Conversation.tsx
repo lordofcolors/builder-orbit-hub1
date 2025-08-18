@@ -68,21 +68,22 @@ export default function Conversation() {
       </div>
 
       {/* Video Feed */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-6 px-4">
         <div className="relative">
-          <div className="w-[400px] h-[225px] bg-gray-800 rounded-lg overflow-hidden border border-app-border">
+          <div className="w-80 h-48 sm:w-[400px] sm:h-[225px] bg-gray-800 rounded-lg overflow-hidden border border-app-border">
             {/* Placeholder for actual video */}
-            <img 
-              src="/api/placeholder/400/225" 
-              alt="Video feed"
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+              <div className="text-center text-app-muted">
+                <Camera className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p className="text-sm">Live Video Feed</p>
+              </div>
+            </div>
           </div>
-          
+
           {/* Maximize button */}
           <Link to="/fullscreen">
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className="absolute top-2 right-2 w-8 h-8 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
             >
               <Maximize className="w-4 h-4" />
@@ -92,9 +93,9 @@ export default function Conversation() {
       </div>
 
       {/* Transcript Area */}
-      <div className="flex justify-center mb-6">
-        <div className={`w-[600px] border border-app-border rounded-lg bg-app-bg p-6 transition-all duration-300 ${
-          transcriptExpanded ? 'h-80' : 'h-20'
+      <div className="flex justify-center mb-6 px-4">
+        <div className={`w-full max-w-[600px] border border-app-border rounded-lg bg-app-bg p-4 sm:p-6 transition-all duration-300 ${
+          transcriptExpanded ? 'h-60 sm:h-80' : 'h-16 sm:h-20'
         }`}>
           {transcriptExpanded ? (
             <div className="h-full flex flex-col">
@@ -122,8 +123,8 @@ export default function Conversation() {
       </div>
 
       {/* Input Area */}
-      <div className="flex justify-center mb-6">
-        <div className="flex gap-2 w-[600px]">
+      <div className="flex justify-center mb-6 px-4">
+        <div className="flex gap-2 w-full max-w-[600px]">
           {/* Expand/Collapse Button */}
           <Button
             onClick={() => setTranscriptExpanded(!transcriptExpanded)}
@@ -156,35 +157,35 @@ export default function Conversation() {
       </div>
 
       {/* Control Buttons */}
-      <div className="flex justify-center gap-8 pb-8">
+      <div className="flex justify-center gap-4 sm:gap-8 pb-8 px-4">
         <div className="text-center">
-          <Button 
-            size="lg" 
-            className="w-15 h-15 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2"
+          <Button
+            size="lg"
+            className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2"
           >
-            <Monitor className="w-6 h-6" />
+            <Monitor className="w-4 h-4 sm:w-6 sm:h-6" />
           </Button>
           <p className="text-xs uppercase tracking-wider text-app-text font-medium">Share Screen</p>
         </div>
-        
+
         <div className="text-center">
           <Link to="/session-end">
-            <Button 
-              size="lg" 
-              className="w-15 h-15 rounded-full bg-red-600 text-white hover:bg-red-700 border border-red-600 mb-2"
+            <Button
+              size="lg"
+              className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-red-600 text-white hover:bg-red-700 border border-red-600 mb-2"
             >
-              <X className="w-6 h-6" />
+              <X className="w-4 h-4 sm:w-6 sm:h-6" />
             </Button>
           </Link>
           <p className="text-xs uppercase tracking-wider text-app-text font-medium">Disconnect</p>
         </div>
-        
+
         <div className="text-center">
-          <Button 
-            size="lg" 
-            className="w-15 h-15 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2"
+          <Button
+            size="lg"
+            className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2"
           >
-            <Camera className="w-6 h-6" />
+            <Camera className="w-4 h-4 sm:w-6 sm:h-6" />
           </Button>
           <p className="text-xs uppercase tracking-wider text-app-text font-medium">Stop Camera</p>
         </div>
