@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,51 +11,45 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Voice Agent App Theme */
+    --background: 217.3 91.2% 9.8%; /* #020617 */
+    --foreground: 0 0% 98.2%; /* #FAFAFA */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 217.3 91.2% 9.8%;
+    --card-foreground: 0 0% 98.2%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 217.3 91.2% 9.8%;
+    --popover-foreground: 0 0% 98.2%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 284.3 54.5% 89.8%; /* #EED4F0 */
+    --primary-foreground: 215.4 22.2% 30.4%; /* #334155 */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215.4 22.2% 30.4%;
+    --secondary-foreground: 0 0% 98.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 215.4 22.2% 30.4%;
+    --muted-foreground: 240 4.9% 67.3%; /* #A1A1AA */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 215.4 22.2% 30.4%;
+    --accent-foreground: 0 0% 98.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 215.4 22.2% 30.4%; /* #334155 */
+    --input: 215.4 22.2% 30.4%;
+    --ring: 284.3 54.5% 89.8%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 217.3 91.2% 9.8%;
+    --sidebar-foreground: 0 0% 98.2%;
+    --sidebar-primary: 284.3 54.5% 89.8%;
+    --sidebar-primary-foreground: 215.4 22.2% 30.4%;
+    --sidebar-accent: 215.4 22.2% 30.4%;
+    --sidebar-accent-foreground: 0 0% 98.2%;
+    --sidebar-border: 215.4 22.2% 30.4%;
+    --sidebar-ring: 284.3 54.5% 89.8%;
   }
 
   .dark {
@@ -101,6 +97,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-literata;
   }
 }
