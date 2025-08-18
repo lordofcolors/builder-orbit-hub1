@@ -6,28 +6,28 @@ import Layout from "@/components/Layout";
 export default function Index() {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] bg-app-bg p-8">
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] bg-app-bg p-4 sm:p-8">
         {/* Agent Avatar */}
-        <div className="mb-16">
+        <div className="mb-8 sm:mb-16">
           <div className="relative">
             {/* Glowing effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-xl opacity-50 animate-pulse"></div>
 
             {/* Agent avatar */}
-            <div className="relative w-48 h-48 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
-              <span className="text-6xl font-bold text-app-primary-dark">a</span>
+            <div className="relative w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 flex items-center justify-center">
+              <span className="text-4xl sm:text-6xl font-bold text-app-primary-dark">a</span>
             </div>
           </div>
         </div>
 
         {/* Preview Window */}
-        <div className="mb-8 relative">
-          <div className="w-96 h-56 bg-gray-800 rounded-lg overflow-hidden border-2 border-app-border relative">
+        <div className="mb-6 sm:mb-8 relative">
+          <div className="w-80 h-48 sm:w-96 sm:h-56 bg-gray-800 rounded-lg overflow-hidden border-2 border-app-border relative">
             {/* Placeholder for video feed */}
             <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
               <div className="text-center text-app-muted">
-                <Camera className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">Camera Preview</p>
+                <Camera className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 opacity-50" />
+                <p className="text-xs sm:text-sm">Camera Preview</p>
               </div>
             </div>
 
@@ -42,14 +42,14 @@ export default function Index() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-8">
+        <div className="flex gap-6 sm:gap-8">
           <div className="text-center">
             <Link to="/conversation">
               <Button
                 size="lg"
-                className="w-16 h-16 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-3"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-3"
               >
-                <Mic className="w-8 h-8" />
+                <Mic className="w-6 h-6 sm:w-8 sm:h-8" />
               </Button>
             </Link>
             <p className="text-xs uppercase tracking-wider text-app-text font-medium">Connect</p>
@@ -58,9 +58,9 @@ export default function Index() {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-16 h-16 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-3"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-3"
             >
-              <Camera className="w-8 h-8" />
+              <Camera className="w-6 h-6 sm:w-8 sm:h-8" />
             </Button>
             <p className="text-xs uppercase tracking-wider text-app-text font-medium">Personalize</p>
           </div>
