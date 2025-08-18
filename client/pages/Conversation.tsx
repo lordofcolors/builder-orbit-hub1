@@ -82,7 +82,7 @@ export default function Conversation() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-app-bg">
+    <div className="flex flex-col min-h-screen bg-app-bg">
       {/* Agent Avatar */}
       <div className="flex justify-center py-6">
         <div className="relative">
