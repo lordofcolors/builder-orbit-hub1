@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import EmojiKeyboard from "@/components/EmojiKeyboard";
 import { Send, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -11,6 +12,10 @@ export default function Fullscreen() {
     if (inputMessage.trim()) {
       setInputMessage("");
     }
+  };
+
+  const handleEmojiSelect = (emoji: string) => {
+    setInputMessage(prev => prev + emoji);
   };
 
   return (
@@ -42,6 +47,10 @@ export default function Fullscreen() {
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-4xl mx-auto">
             <div className="flex gap-4 items-center">
+              <EmojiKeyboard
+                onEmojiSelect={handleEmojiSelect}
+                className="self-end mb-2"
+              />
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
@@ -49,7 +58,7 @@ export default function Fullscreen() {
                 className="flex-1 bg-black/50 border-app-border text-white placeholder:text-gray-300 h-16 text-lg"
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
               />
-              <Button 
+              <Button
                 onClick={sendMessage}
                 className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-16 px-8"
               >
