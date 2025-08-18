@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'literata': ['Literata', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Voice Agent App Colors
+        'app-bg': '#020617',
+        'app-primary': '#EED4F0',
+        'app-primary-dark': '#334155',
+        'app-border': '#334155',
+        'app-text': '#FAFAFA',
+        'app-muted': '#A1A1AA',
+        'app-agent': '#94DFE9',
+        'app-user': '#EED4F0',
       },
       borderRadius: {
         lg: "var(--radius)",
