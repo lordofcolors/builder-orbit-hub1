@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import EmojiKeyboard from "@/components/EmojiKeyboard";
+import EmojiExpander from "@/components/EmojiExpander";
 import {
   Monitor,
   X,
@@ -184,8 +184,8 @@ export default function Conversation() {
       {/* Input Area */}
       <div className="flex justify-center mb-6 px-4">
         <div className="flex gap-2 w-full max-w-[600px]">
-          {/* Emoji Keyboard */}
-          <EmojiKeyboard onEmojiSelect={handleEmojiSelect} />
+          {/* Emoji Expander */}
+          <EmojiExpander onEmojiSelect={handleEmojiSelect} />
 
           {/* Input Field */}
           <Input
