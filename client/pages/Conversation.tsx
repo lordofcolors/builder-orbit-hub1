@@ -174,9 +174,6 @@ export default function Conversation() {
                   <span className="text-app-agent text-sm">
                     A: {transcript[transcript.length - 1]?.content || 'Start conversation...'}
                   </span>
-                  <div className="mt-1">
-                    <span className="text-xs text-app-muted">Click to view full transcript</span>
-                  </div>
                 </div>
               </div>
             )}
