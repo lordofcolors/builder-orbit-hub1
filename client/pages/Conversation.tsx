@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import InputToggle from "@/components/InputToggle";
+import EmojiInputToggle from "@/components/EmojiInputToggle";
 import {
   Monitor,
   X,
@@ -208,8 +208,8 @@ export default function Conversation() {
         </div>
       </div>
 
-      {/* Input Toggle Area */}
-      <InputToggle
+      {/* Emoji Input Toggle Area */}
+      <EmojiInputToggle
         onMessageSend={handleMessageSend}
         onReaction={handleReaction}
       />
