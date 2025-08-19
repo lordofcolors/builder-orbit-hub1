@@ -129,43 +129,12 @@ export default function Conversation() {
       </div>
 
       {/* Video Feed */}
-      <div className="flex justify-center mb-4 px-4">
-        <div className="relative">
-          <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
-            transcriptExpanded ? 'w-56 h-32 sm:w-64 sm:h-36' : 'w-72 h-40 sm:w-80 sm:h-48 md:w-[400px] md:h-[225px]'
-          }`}>
-            {/* Live video feed */}
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800"
-              alt="Live Video Feed"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Maximize button */}
-          <Link to="/fullscreen">
-            <Button
-              size="sm"
-              className="absolute top-2 right-2 w-7 h-7 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
-            >
-              <Maximize className="w-3 h-3" />
-            </Button>
-          </Link>
-
-          {/* User Mute button */}
-          <Button
-            onClick={() => setIsUserMuted(!isUserMuted)}
-            size="sm"
-            className="absolute bottom-2 right-2 w-7 h-7 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
-          >
-            {isUserMuted ? (
-              <MicOff className="w-3 h-3" />
-            ) : (
-              <Mic className="w-3 h-3" />
-            )}
-          </Button>
-        </div>
-      </div>
+      <VideoFeed
+        mode={videoMode}
+        transcriptExpanded={transcriptExpanded}
+        isUserMuted={isUserMuted}
+        setIsUserMuted={setIsUserMuted}
+      />
 
       {/* Transcript Area */}
       <div className="flex justify-center mb-4 px-4">
