@@ -27,13 +27,12 @@ export default function Index() {
         {/* Preview Window */}
         <div className="mb-6 sm:mb-8 relative">
           <div className="w-80 h-48 sm:w-96 sm:h-56 bg-gray-800 rounded-lg overflow-hidden border-2 border-app-border relative">
-            {/* Placeholder for video feed */}
-            <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-              <div className="text-center text-app-muted">
-                <Camera className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 opacity-50" />
-                <p className="text-xs sm:text-sm">Camera Preview</p>
-              </div>
-            </div>
+            {/* Video feed preview */}
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800"
+              alt="Camera Preview"
+              className="w-full h-full object-cover"
+            />
 
             {/* Preview indicator */}
             <div className="absolute bottom-4 left-4">
