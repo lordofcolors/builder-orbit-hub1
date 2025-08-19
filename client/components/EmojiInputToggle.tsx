@@ -37,9 +37,9 @@ export default function EmojiInputToggle({
   };
 
   return (
-    <div className="flex justify-center mb-6 px-4">
+    <div className="flex justify-center mb-4 px-4">
       <div className="w-full max-w-[600px]">
-        <div className="relative h-16">
+        <div className="relative h-12 sm:h-16">
           {!isEmojiMode ? (
             // Input Mode: [Emoji Button] [Input Field] [Send Button]
             <div className="flex gap-3 items-center">
