@@ -95,7 +95,7 @@ export default function Conversation() {
   };
 
   return (
-    <div className="h-screen bg-app-bg flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-app-bg flex flex-col">
       {/* Agent Avatar */}
       <div className="flex justify-center py-3">
         <div className="relative">
@@ -164,11 +164,11 @@ export default function Conversation() {
         </div>
       </div>
 
-      {/* Transcript Area - Flexible space */}
-      <div className="flex justify-center mb-4 px-4 flex-1 min-h-0">
+      {/* Transcript Area */}
+      <div className="flex justify-center mb-4 px-4">
         <div
           className={`w-full max-w-[600px] border border-app-border rounded-lg bg-app-bg transition-all duration-300 relative cursor-pointer ${
-            transcriptExpanded ? "h-full" : "h-16 sm:h-20"
+            transcriptExpanded ? "h-64 sm:h-80" : "h-16 sm:h-20"
           }`}
           onClick={() => setTranscriptExpanded(!transcriptExpanded)}
         >
@@ -285,7 +285,7 @@ export default function Conversation() {
       />
 
       {/* Control Buttons */}
-      <div className="flex justify-center gap-4 sm:gap-8 py-4 px-4 bg-app-bg flex-shrink-0">
+      <div className="flex justify-center gap-4 sm:gap-8 py-4 px-4 bg-app-bg mt-auto">
         <div className="flex flex-col items-center">
           <Button
             size="lg"
