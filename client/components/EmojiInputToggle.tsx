@@ -55,7 +55,7 @@ export default function EmojiInputToggle({
                 />
               </Button>
 
-              <div className="flex-1 animate-in fade-in duration-1000 fill-mode-both">
+              <div className="flex-1">
                 <Input
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
@@ -68,7 +68,7 @@ export default function EmojiInputToggle({
 
               <Button
                 onClick={handleSendMessage}
-                className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4 flex-shrink-0 animate-in fade-in duration-1000 delay-200 fill-mode-both"
+                className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4 flex-shrink-0"
               >
                 <Send className="w-4 h-4" />
               </Button>
