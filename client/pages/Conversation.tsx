@@ -238,17 +238,17 @@ export default function Conversation() {
 
       {/* Control Buttons */}
       <div className="flex justify-center gap-4 sm:gap-8 pb-8 px-4 bg-app-bg">
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <Button
             size="lg"
             className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
           >
             <Monitor className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
-          <p className="text-xs uppercase tracking-wider text-app-text font-medium">Share Screen</p>
+          <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">Share Screen</p>
         </div>
 
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <Link to="/session-end">
             <Button
               size="lg"
@@ -257,17 +257,17 @@ export default function Conversation() {
               <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
           </Link>
-          <p className="text-xs uppercase tracking-wider text-app-text font-medium">Disconnect</p>
+          <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">Disconnect</p>
         </div>
 
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <Button
             size="lg"
             className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
           >
             <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
-          <p className="text-xs uppercase tracking-wider text-app-text font-medium">Stop Camera</p>
+          <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">Stop Camera</p>
         </div>
       </div>
     </div>
