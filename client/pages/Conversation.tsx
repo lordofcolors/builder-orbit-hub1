@@ -192,22 +192,31 @@ export default function Conversation() {
           {/* Chat messages - Fixed height to ensure input is always visible */}
           <div className="h-[34rem] overflow-y-auto p-3 space-y-3 bg-app-bg">
             {transcript.map((message) => (
-              <div key={message.id} className={`flex ${
-                message.type === 'agent' ? 'justify-start' : 'justify-end'
-              }`}>
-                <div className={`max-w-[85%] ${
-                  message.type === 'agent' ? 'text-left' : 'text-right'
-                }`}>
-                  <div className={`rounded-lg p-2 ${
-                    message.type === 'agent'
-                      ? 'bg-app-border text-app-agent'
-                      : 'bg-app-primary text-app-bg'
-                  }`}>
+              <div
+                key={message.id}
+                className={`flex ${
+                  message.type === "agent" ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div
+                  className={`max-w-[85%] ${
+                    message.type === "agent" ? "text-left" : "text-right"
+                  }`}
+                >
+                  <div
+                    className={`rounded-lg p-2 ${
+                      message.type === "agent"
+                        ? "bg-app-border text-app-agent"
+                        : "bg-app-primary text-app-bg"
+                    }`}
+                  >
                     <p className="text-sm">{message.content}</p>
                   </div>
-                  <div className={`text-xs text-app-muted font-mono mt-1 ${
-                    message.type === 'agent' ? 'text-left' : 'text-right'
-                  }`}>
+                  <div
+                    className={`text-xs text-app-muted font-mono mt-1 ${
+                      message.type === "agent" ? "text-left" : "text-right"
+                    }`}
+                  >
                     {message.timestamp.split(" ")[0]}
                   </div>
                 </div>
@@ -254,9 +263,11 @@ export default function Conversation() {
       <div className="flex justify-center py-3">
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
-          <div className={`relative rounded-full overflow-hidden transition-all duration-300 ${
-            transcriptExpanded ? 'w-20 h-20' : 'w-24 h-24 sm:w-28 sm:h-28'
-          }`}>
+          <div
+            className={`relative rounded-full overflow-hidden transition-all duration-300 ${
+              transcriptExpanded ? "w-20 h-20" : "w-24 h-24 sm:w-28 sm:h-28"
+            }`}
+          >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800"
               alt="Voice Agent Avatar"
@@ -323,12 +334,19 @@ export default function Conversation() {
                 </div>
                 <div className="flex-1 overflow-y-auto space-y-4 pr-2">
                   {transcript.map((message) => (
-                    <div key={message.id} className={`flex ${
-                      message.type === 'agent' ? 'justify-start' : 'justify-end'
-                    }`}>
-                      <div className={`max-w-[80%] ${
-                        message.type === 'agent' ? 'text-left' : 'text-right'
-                      }`}>
+                    <div
+                      key={message.id}
+                      className={`flex ${
+                        message.type === "agent"
+                          ? "justify-start"
+                          : "justify-end"
+                      }`}
+                    >
+                      <div
+                        className={`max-w-[80%] ${
+                          message.type === "agent" ? "text-left" : "text-right"
+                        }`}
+                      >
                         <div className="text-sm mb-1">
                           <span
                             className={`font-medium ${
@@ -349,9 +367,13 @@ export default function Conversation() {
                         >
                           {message.content}
                         </p>
-                        <div className={`text-xs text-app-muted font-mono mt-1 ${
-                          message.type === 'agent' ? 'text-left' : 'text-right'
-                        }`}>
+                        <div
+                          className={`text-xs text-app-muted font-mono mt-1 ${
+                            message.type === "agent"
+                              ? "text-left"
+                              : "text-right"
+                          }`}
+                        >
                           {message.timestamp.split(" ")[0]}
                         </div>
                       </div>

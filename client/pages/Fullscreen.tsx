@@ -6,22 +6,26 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const userImages = {
   you: "https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800",
-  user2: "https://images.pexels.com/photos/6942776/pexels-photo-6942776.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  user3: "https://images.pexels.com/photos/27603433/pexels-photo-27603433.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  user4: "https://images.pexels.com/photos/15023413/pexels-photo-15023413.jpeg?auto=compress&cs=tinysrgb&w=1600"
+  user2:
+    "https://images.pexels.com/photos/6942776/pexels-photo-6942776.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  user3:
+    "https://images.pexels.com/photos/27603433/pexels-photo-27603433.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  user4:
+    "https://images.pexels.com/photos/15023413/pexels-photo-15023413.jpeg?auto=compress&cs=tinysrgb&w=1600",
 };
 
 const userLabels = {
   you: "You",
   user2: "User 2",
-  user3: "User 3", 
-  user4: "User 4"
+  user3: "User 3",
+  user4: "User 4",
 };
 
 export default function Fullscreen() {
   const [searchParams] = useSearchParams();
-  const userParam = searchParams.get('user') as keyof typeof userImages || 'you';
-  
+  const userParam =
+    (searchParams.get("user") as keyof typeof userImages) || "you";
+
   const handleMessageSend = (message: string) => {
     // Handle message sending in fullscreen mode
     console.log("Message sent:", message);
@@ -65,7 +69,7 @@ export default function Fullscreen() {
         </div>
 
         {/* Bottom input area - only show for "You" */}
-        {userParam === 'you' && (
+        {userParam === "you" && (
           <div className="absolute bottom-0 left-0 right-0 p-8">
             <div className="max-w-4xl mx-auto">
               <EmojiInputToggle

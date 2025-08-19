@@ -24,34 +24,34 @@ const App = () => (
       <VideoModeProvider>
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<Index />} />
-          <Route
-            path="/pre-call"
-            element={
-              <Layout>
-                <PreCall />
-              </Layout>
-            }
-          />
-          <Route
-            path="/conversation"
-            element={
-              <Layout>
-                <Conversation />
-              </Layout>
-            }
-          />
-          <Route path="/fullscreen" element={<Fullscreen />} />
-          <Route
-            path="/session-end"
-            element={
-              <Layout>
-                <SessionEnd />
-              </Layout>
-            }
-          />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Index />} />
+            <Route
+              path="/pre-call"
+              element={
+                <Layout>
+                  <PreCall />
+                </Layout>
+              }
+            />
+            <Route
+              path="/conversation"
+              element={
+                <Layout>
+                  <Conversation />
+                </Layout>
+              }
+            />
+            <Route path="/fullscreen" element={<Fullscreen />} />
+            <Route
+              path="/session-end"
+              element={
+                <Layout>
+                  <SessionEnd />
+                </Layout>
+              }
+            />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </VideoModeProvider>
