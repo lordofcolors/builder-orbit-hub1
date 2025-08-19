@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import EmojiInputToggle from "@/components/EmojiInputToggle";
+import VideoFeed from "@/components/VideoFeed";
+import { useVideoMode } from "@/components/Layout";
 import {
   Monitor,
   X,
@@ -33,6 +35,7 @@ export default function Conversation() {
   const [reactions, setReactions] = useState<Reaction[]>([]);
   const [isAgentMuted, setIsAgentMuted] = useState(false);
   const [isUserMuted, setIsUserMuted] = useState(false);
+  const { videoMode } = useVideoMode();
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([
     {
       id: "1",
