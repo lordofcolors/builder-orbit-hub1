@@ -11,7 +11,9 @@ interface VideoFeedProps {
 }
 
 const stockVideoUrl = "https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800";
-const avatarUrl = "https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800";
+const user2VideoUrl = "https://images.pexels.com/photos/6942776/pexels-photo-6942776.jpeg?auto=compress&cs=tinysrgb&w=800";
+const user3VideoUrl = "https://images.pexels.com/photos/27603433/pexels-photo-27603433.jpeg?auto=compress&cs=tinysrgb&w=800";
+const user4VideoUrl = "https://images.pexels.com/photos/15023413/pexels-photo-15023413.jpeg?auto=compress&cs=tinysrgb&w=800";
 
 export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIsUserMuted }: VideoFeedProps) {
   if (mode === "single") {
@@ -52,11 +54,11 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
   if (mode === "dual") {
     return (
       <div className="flex justify-center mb-4 px-4">
-        <div className="flex gap-3">
-          {/* User 1 */}
+        <div className="flex gap-4">
+          {/* User 1 (You) */}
           <div className="relative">
             <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
-              transcriptExpanded ? 'w-24 h-18 sm:w-28 sm:h-20' : 'w-32 h-24 sm:w-40 sm:h-28'
+              transcriptExpanded ? 'w-36 h-28 sm:w-40 sm:h-32' : 'w-48 h-36 sm:w-56 sm:h-42 md:w-64 md:h-48'
             }`}>
               <img 
                 src={stockVideoUrl} 
@@ -64,29 +66,13 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">You</div>
-          </div>
-          
-          {/* User 2 */}
-          <div className="relative">
-            <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
-              transcriptExpanded ? 'w-24 h-18 sm:w-28 sm:h-20' : 'w-32 h-24 sm:w-40 sm:h-28'
-            }`}>
-              <img 
-                src={avatarUrl} 
-                alt="User 2 Video"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 2</div>
-          </div>
-          
-          {/* Controls on the right side */}
-          <div className="flex flex-col gap-1 ml-2">
+            <div className="absolute bottom-2 left-2 text-xs bg-black/70 text-white px-2 py-1 rounded">You</div>
+            
+            {/* Controls for You feed only */}
             <Link to="/fullscreen">
               <Button
                 size="sm"
-                className="w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+                className="absolute top-2 right-2 w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
               >
                 <Maximize className="w-3 h-3" />
               </Button>
@@ -95,10 +81,34 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
             <Button
               onClick={() => setIsUserMuted(!isUserMuted)}
               size="sm"
-              className="w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+              className="absolute bottom-2 right-2 w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
             >
               {isUserMuted ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
             </Button>
+          </div>
+          
+          {/* User 2 */}
+          <div className="relative">
+            <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
+              transcriptExpanded ? 'w-36 h-28 sm:w-40 sm:h-32' : 'w-48 h-36 sm:w-56 sm:h-42 md:w-64 md:h-48'
+            }`}>
+              <img 
+                src={user2VideoUrl} 
+                alt="User 2 Video"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute bottom-2 left-2 text-xs bg-black/70 text-white px-2 py-1 rounded">User 2</div>
+            
+            {/* Expand button for User 2 */}
+            <Link to="/fullscreen">
+              <Button
+                size="sm"
+                className="absolute top-2 right-2 w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+              >
+                <Maximize className="w-3 h-3" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -109,8 +119,8 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
     return (
       <div className="flex justify-center mb-4 px-4">
         <div className="relative">
-          <div className={`grid grid-cols-2 gap-2 transition-all duration-300 ${
-            transcriptExpanded ? 'w-40 h-32' : 'w-60 h-48 sm:w-80 sm:h-60'
+          <div className={`grid grid-cols-2 gap-3 transition-all duration-300 ${
+            transcriptExpanded ? 'w-48 h-36' : 'w-64 h-48 sm:w-80 sm:h-60 md:w-96 md:h-72'
           }`}>
             {/* User 1 (You) */}
             <div className="relative bg-gray-800 rounded-lg overflow-hidden border border-app-border">
@@ -120,57 +130,85 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">You</div>
+              
+              {/* Controls for You feed only */}
+              <Link to="/fullscreen">
+                <Button
+                  size="sm"
+                  className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+                >
+                  <Maximize className="w-2.5 h-2.5" />
+                </Button>
+              </Link>
+              
+              <Button
+                onClick={() => setIsUserMuted(!isUserMuted)}
+                size="sm"
+                className="absolute bottom-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+              >
+                {isUserMuted ? <MicOff className="w-2.5 h-2.5" /> : <Mic className="w-2.5 h-2.5" />}
+              </Button>
             </div>
             
             {/* User 2 */}
             <div className="relative bg-gray-800 rounded-lg overflow-hidden border border-app-border">
               <img 
-                src={avatarUrl} 
+                src={user2VideoUrl} 
                 alt="User 2 Video"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 2</div>
+              
+              {/* Expand button for User 2 */}
+              <Link to="/fullscreen">
+                <Button
+                  size="sm"
+                  className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+                >
+                  <Maximize className="w-2.5 h-2.5" />
+                </Button>
+              </Link>
             </div>
             
             {/* User 3 */}
             <div className="relative bg-gray-800 rounded-lg overflow-hidden border border-app-border">
               <img 
-                src={avatarUrl} 
+                src={user3VideoUrl} 
                 alt="User 3 Video"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 3</div>
+              
+              {/* Expand button for User 3 */}
+              <Link to="/fullscreen">
+                <Button
+                  size="sm"
+                  className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+                >
+                  <Maximize className="w-2.5 h-2.5" />
+                </Button>
+              </Link>
             </div>
             
             {/* User 4 */}
             <div className="relative bg-gray-800 rounded-lg overflow-hidden border border-app-border">
               <img 
-                src={avatarUrl} 
+                src={user4VideoUrl} 
                 alt="User 4 Video"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 4</div>
+              
+              {/* Expand button for User 4 */}
+              <Link to="/fullscreen">
+                <Button
+                  size="sm"
+                  className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+                >
+                  <Maximize className="w-2.5 h-2.5" />
+                </Button>
+              </Link>
             </div>
-          </div>
-          
-          {/* Controls */}
-          <div className="absolute -top-8 right-0 flex gap-1">
-            <Link to="/fullscreen">
-              <Button
-                size="sm"
-                className="w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
-              >
-                <Maximize className="w-3 h-3" />
-              </Button>
-            </Link>
-            
-            <Button
-              onClick={() => setIsUserMuted(!isUserMuted)}
-              size="sm"
-              className="w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
-            >
-              {isUserMuted ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
-            </Button>
           </div>
         </div>
       </div>
