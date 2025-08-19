@@ -76,7 +76,11 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
               <Button
                 onClick={toggleToInput}
                 size="sm"
-                className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in slide-in-from-left duration-300"
+                className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in fade-in slide-in-from-left"
+                style={{
+                  animationDuration: '500ms',
+                  animationFillMode: 'backwards'
+                }}
               >
                 <X className="w-4 h-4" />
               </Button>
@@ -88,10 +92,11 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                     key={index}
                     onClick={() => handleReaction(emoji)}
                     size="lg"
-                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-300 rounded-full animate-in slide-in-from-bottom"
+                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-500 rounded-full animate-in fade-in slide-in-from-bottom"
                     style={{
-                      animationDelay: `${index * 50}ms`,
-                      animationDuration: '200ms'
+                      animationDelay: `${index * 150}ms`,
+                      animationDuration: '600ms',
+                      animationFillMode: 'backwards'
                     }}
                   >
                     {emoji}
@@ -103,9 +108,10 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
               <Button
                 onClick={toggleToInput}
                 size="sm"
-                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in slide-in-from-right"
+                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in fade-in slide-in-from-right"
                 style={{
-                  animationDuration: '800ms'
+                  animationDuration: '800ms',
+                  animationFillMode: 'backwards'
                 }}
               >
                 <Keyboard className="w-5 h-5" />
