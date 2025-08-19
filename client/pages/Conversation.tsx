@@ -97,6 +97,160 @@ export default function Conversation() {
     setReactions([...reactions, newReaction]);
   };
 
+  // Special layout for 4-user mode
+  if (videoMode === "quad") {
+    return (
+      <div className="h-screen bg-app-bg flex flex-col">
+        {/* Agent Avatar */}
+        <div className="flex justify-center py-3">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
+            <div className="relative w-16 h-16 rounded-full overflow-hidden">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800"
+                alt="Voice Agent Avatar"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Agent Mute Toggle */}
+            <Button
+              onClick={() => setIsAgentMuted(!isAgentMuted)}
+              size="sm"
+              className="absolute top-0 -right-1 w-5 h-5 p-0 bg-app-bg/80 text-app-agent hover:bg-app-bg/90 rounded-full border border-app-border"
+            >
+              {isAgentMuted ? (
+                <MicOff className="w-2 h-2" />
+              ) : (
+                <Mic className="w-2 h-2" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        {/* Main content area with videos on left and chat on right */}
+        <div className="flex-1 flex">
+          {/* Left side - Videos and controls */}
+          <div className="w-2/3 flex flex-col">
+            {/* Video Feed */}
+            <div className="flex-1 flex items-center justify-center">
+              <VideoFeed
+                mode={videoMode}
+                transcriptExpanded={false}
+                isUserMuted={isUserMuted}
+                setIsUserMuted={setIsUserMuted}
+              />
+            </div>
+
+            {/* Control Buttons */}
+            <div className="flex justify-center gap-4 sm:gap-8 py-4 px-4">
+              <div className="flex flex-col items-center">
+                <Button
+                  size="lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
+                >
+                  <Monitor className="w-4 h-4" />
+                </Button>
+                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                  Share Screen
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <Link to="/session-end">
+                  <Button
+                    size="lg"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 text-white hover:bg-red-700 border border-red-600 mb-2 p-0 flex items-center justify-center"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                  Disconnect
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <Button
+                  size="lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
+                >
+                  <Camera className="w-4 h-4" />
+                </Button>
+                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                  Stop Camera
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side - Chat */}
+          <div className="w-1/3 border-l border-app-border flex flex-col h-full">
+            {/* Chat header */}
+            <div className="p-4 border-b border-app-border">
+              <h3 className="text-lg font-medium text-app-text">Live Chat</h3>
+            </div>
+
+            {/* Chat messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {transcript.map((message) => (
+                <div key={message.id} className={`flex ${
+                  message.type === 'agent' ? 'justify-start' : 'justify-end'
+                }`}>
+                  <div className={`max-w-[85%] ${
+                    message.type === 'agent' ? 'text-left' : 'text-right'
+                  }`}>
+                    <div className={`rounded-lg p-3 ${
+                      message.type === 'agent' 
+                        ? 'bg-app-border text-app-agent' 
+                        : 'bg-app-primary text-app-bg'
+                    }`}>
+                      <p className="text-sm">{message.content}</p>
+                    </div>
+                    <div className={`text-xs text-app-muted font-mono mt-1 ${
+                      message.type === 'agent' ? 'text-left' : 'text-right'
+                    }`}>
+                      {message.timestamp.split(" ")[0]}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Show recent reactions */}
+              {reactions.length > 0 && (
+                <div className="flex justify-end">
+                  <div className="max-w-[85%] text-right">
+                    <div className="bg-app-primary text-app-bg rounded-lg p-2">
+                      <div className="flex gap-1 justify-end">
+                        {reactions.slice(-3).map((reaction) => (
+                          <span key={reaction.id} className="text-lg">
+                            {reaction.emoji}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-xs text-app-muted font-mono mt-1 text-right">
+                      {reactions[reactions.length - 1]?.timestamp.split(" ")[0]}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Chat input */}
+            <div className="p-4 border-t border-app-border">
+              <EmojiInputToggle
+                onMessageSend={handleMessageSend}
+                onReaction={handleReaction}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default layout for single and dual modes
   return (
     <div className="min-h-screen bg-app-bg flex flex-col">
       {/* Agent Avatar */}
