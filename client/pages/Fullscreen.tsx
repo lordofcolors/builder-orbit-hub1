@@ -1,29 +1,26 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import EmojiKeyboard from "@/components/EmojiKeyboard";
-import { Send, X } from "lucide-react";
+import EmojiInputToggle from "@/components/EmojiInputToggle";
+import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Fullscreen() {
-  const [inputMessage, setInputMessage] = useState("");
-
-  const sendMessage = () => {
-    if (inputMessage.trim()) {
-      setInputMessage("");
-    }
+  const handleMessageSend = (message: string) => {
+    // Handle message sending in fullscreen mode
+    console.log('Message sent:', message);
   };
 
-  const handleEmojiSelect = (emoji: string) => {
-    setInputMessage(prev => prev + emoji);
+  const handleReaction = (emoji: string) => {
+    // Handle emoji reaction in fullscreen mode
+    console.log('Reaction:', emoji);
   };
 
   return (
     <div className="h-screen bg-app-bg relative overflow-hidden">
       {/* Full screen video background */}
       <div className="absolute inset-0">
-        <img 
-          src="/api/placeholder/1920/1080" 
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800"
           alt="Full screen video"
           className="w-full h-full object-cover"
         />
@@ -46,25 +43,10 @@ export default function Fullscreen() {
         {/* Bottom input area */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-4xl mx-auto">
-            <div className="flex gap-4 items-center">
-              <EmojiKeyboard
-                onEmojiSelect={handleEmojiSelect}
-                className="self-end mb-2"
-              />
-              <Input
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                placeholder="Type something here"
-                className="flex-1 bg-black/50 border-app-border text-white placeholder:text-gray-300 h-16 text-lg"
-                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-              />
-              <Button
-                onClick={sendMessage}
-                className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-16 px-8"
-              >
-                <Send className="w-6 h-6" />
-              </Button>
-            </div>
+            <EmojiInputToggle
+              onMessageSend={handleMessageSend}
+              onReaction={handleReaction}
+            />
           </div>
         </div>
       </div>
