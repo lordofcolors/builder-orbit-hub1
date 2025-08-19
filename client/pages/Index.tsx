@@ -56,7 +56,9 @@ export default function Index() {
                 <Mic className="w-6 h-6 sm:w-8 sm:h-8" />
               </Button>
             </Link>
-            <p className="text-xs uppercase tracking-wider text-app-text font-medium">Connect</p>
+            <p className="text-xs uppercase tracking-wider text-app-text font-medium">
+              Connect
+            </p>
           </div>
 
           <div className="text-center">
@@ -66,7 +68,9 @@ export default function Index() {
             >
               <Camera className="w-6 h-6 sm:w-8 sm:h-8" />
             </Button>
-            <p className="text-xs uppercase tracking-wider text-app-text font-medium">Personalize</p>
+            <p className="text-xs uppercase tracking-wider text-app-text font-medium">
+              Personalize
+            </p>
           </div>
         </div>
       </div>

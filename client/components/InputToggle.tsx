@@ -10,8 +10,11 @@ interface InputToggleProps {
 
 const reactionEmojis = ["😀", "👍", "❤️", "🎉"];
 
-export default function InputToggle({ onMessageSend, onReaction }: InputToggleProps) {
-  const [mode, setMode] = useState<'keyboard' | 'emoji'>('keyboard');
+export default function InputToggle({
+  onMessageSend,
+  onReaction,
+}: InputToggleProps) {
+  const [mode, setMode] = useState<"keyboard" | "emoji">("keyboard");
   const [isInputExpanded, setIsInputExpanded] = useState(true);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -27,11 +30,11 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
   };
 
   const toggleMode = () => {
-    if (mode === 'keyboard') {
-      setMode('emoji');
+    if (mode === "keyboard") {
+      setMode("emoji");
       setIsInputExpanded(true);
     } else {
-      setMode('keyboard');
+      setMode("keyboard");
       setIsInputExpanded(true);
     }
   };
@@ -50,7 +53,7 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
             size="sm"
             className="bg-app-border text-app-text hover:bg-app-border/80 px-4 py-2 rounded-full"
           >
-            {mode === 'keyboard' ? (
+            {mode === "keyboard" ? (
               <>
                 <Smile className="w-4 h-4 mr-2" />
                 Switch to Reactions
@@ -67,7 +70,7 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
         {/* Input Area */}
         {isInputExpanded && (
           <div className="transition-all duration-300">
-            {mode === 'keyboard' ? (
+            {mode === "keyboard" ? (
               // Keyboard Mode
               <div className="flex gap-3">
                 <Button
@@ -77,16 +80,16 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
                 >
                   <Keyboard className="w-4 h-4" />
                 </Button>
-                
+
                 <Input
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Type something here"
                   className="flex-1 bg-app-bg border-app-border text-app-text placeholder:text-app-muted h-10"
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                 />
-                
-                <Button 
+
+                <Button
                   onClick={handleSendMessage}
                   className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4"
                 >
@@ -108,7 +111,9 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
                     </Button>
                   ))}
                 </div>
-                <p className="text-xs text-app-muted mt-2">Tap to react to the assistant's message</p>
+                <p className="text-xs text-app-muted mt-2">
+                  Tap to react to the assistant's message
+                </p>
               </div>
             )}
           </div>
@@ -122,7 +127,7 @@ export default function InputToggle({ onMessageSend, onReaction }: InputTogglePr
               size="sm"
               className="bg-app-border text-app-text hover:bg-app-border/80 px-6 py-2 rounded-full"
             >
-              {mode === 'keyboard' ? (
+              {mode === "keyboard" ? (
                 <>
                   <Keyboard className="w-4 h-4 mr-2" />
                   Show Keyboard

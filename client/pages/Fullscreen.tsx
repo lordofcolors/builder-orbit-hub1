@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 export default function Fullscreen() {
   const handleMessageSend = (message: string) => {
     // Handle message sending in fullscreen mode
-    console.log('Message sent:', message);
+    console.log("Message sent:", message);
   };
 
   const handleReaction = (emoji: string) => {
     // Handle emoji reaction in fullscreen mode
-    console.log('Reaction:', emoji);
+    console.log("Reaction:", emoji);
   };
 
   return (
@@ -25,21 +25,21 @@ export default function Fullscreen() {
           className="w-full h-full object-cover"
         />
       </div>
-      
+
       {/* Overlay with controls */}
       <div className="absolute inset-0 bg-black/20">
         {/* Exit fullscreen button */}
         <div className="absolute top-4 right-4">
           <Link to="/conversation">
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className="w-10 h-10 p-0 bg-black/50 text-white hover:bg-black/70 rounded-full"
             >
               <X className="w-5 h-5" />
             </Button>
           </Link>
         </div>
-        
+
         {/* Bottom input area */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-4xl mx-auto">

@@ -8,15 +8,87 @@ interface EmojiKeyboardProps {
 }
 
 const emojiCategories = {
-  faces: ["😀", "😃", "😄", "😁", "😅", "😂", "🤣", "😊", "😇", "🙂", "🙃", "😉", "😌", "😍", "🥰", "😘"],
-  gestures: ["👍", "👎", "👌", "✌️", "🤞", "🤟", "🤘", "🤙", "👈", "👉", "👆", "🖕", "👇", "☝️", "👋", "🤚"],
-  objects: ["❤️", "💙", "💚", "💛", "🧡", "💜", "🖤", "🤍", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖"],
-  nature: ["🌟", "⭐", "🌙", "☀️", "⛅", "🌈", "🔥", "💧", "🌸", "🌺", "🌻", "🌷", "🌹", "���", "🌾", "🍀"]
+  faces: [
+    "😀",
+    "😃",
+    "😄",
+    "😁",
+    "😅",
+    "😂",
+    "🤣",
+    "😊",
+    "😇",
+    "🙂",
+    "🙃",
+    "😉",
+    "😌",
+    "😍",
+    "🥰",
+    "😘",
+  ],
+  gestures: [
+    "👍",
+    "👎",
+    "👌",
+    "✌️",
+    "🤞",
+    "🤟",
+    "🤘",
+    "🤙",
+    "👈",
+    "👉",
+    "👆",
+    "🖕",
+    "👇",
+    "☝️",
+    "👋",
+    "🤚",
+  ],
+  objects: [
+    "❤️",
+    "💙",
+    "💚",
+    "💛",
+    "🧡",
+    "💜",
+    "🖤",
+    "🤍",
+    "🤎",
+    "💔",
+    "❣️",
+    "💕",
+    "💞",
+    "💓",
+    "💗",
+    "💖",
+  ],
+  nature: [
+    "🌟",
+    "⭐",
+    "🌙",
+    "☀️",
+    "⛅",
+    "🌈",
+    "🔥",
+    "💧",
+    "🌸",
+    "🌺",
+    "🌻",
+    "🌷",
+    "🌹",
+    "���",
+    "🌾",
+    "🍀",
+  ],
 };
 
-export default function EmojiKeyboard({ onEmojiSelect, className = "" }: EmojiKeyboardProps) {
+export default function EmojiKeyboard({
+  onEmojiSelect,
+  className = "",
+}: EmojiKeyboardProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<keyof typeof emojiCategories>("faces");
+  const [activeCategory, setActiveCategory] =
+    useState<keyof typeof emojiCategories>("faces");
 
   const handleEmojiClick = (emoji: string) => {
     onEmojiSelect(emoji);
@@ -44,18 +116,20 @@ export default function EmojiKeyboard({ onEmojiSelect, className = "" }: EmojiKe
           {Object.keys(emojiCategories).map((category) => (
             <Button
               key={category}
-              onClick={() => setActiveCategory(category as keyof typeof emojiCategories)}
+              onClick={() =>
+                setActiveCategory(category as keyof typeof emojiCategories)
+              }
               size="sm"
               className={`flex-1 h-10 rounded-none border-0 ${
-                activeCategory === category 
-                  ? 'bg-app-primary text-app-primary-dark' 
-                  : 'bg-transparent text-app-text hover:bg-app-border/20'
+                activeCategory === category
+                  ? "bg-app-primary text-app-primary-dark"
+                  : "bg-transparent text-app-text hover:bg-app-border/20"
               }`}
             >
-              {category === 'faces' && '😀'}
-              {category === 'gestures' && '👍'}
-              {category === 'objects' && '❤️'}
-              {category === 'nature' && '🌟'}
+              {category === "faces" && "😀"}
+              {category === "gestures" && "👍"}
+              {category === "objects" && "❤️"}
+              {category === "nature" && "🌟"}
             </Button>
           ))}
         </div>

@@ -9,7 +9,10 @@ interface EmojiExpanderProps {
 
 const quickEmojis = ["😀", "👍", "❤️", "🎉"];
 
-export default function EmojiExpander({ onEmojiSelect, className = "" }: EmojiExpanderProps) {
+export default function EmojiExpander({
+  onEmojiSelect,
+  className = "",
+}: EmojiExpanderProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleEmojiClick = (emoji: string) => {

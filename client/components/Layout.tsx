@@ -8,14 +8,17 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  
+
   return (
     <div className="min-h-screen bg-app-bg text-app-text">
       <header className="flex items-center justify-between p-4 border-b border-app-border">
         {/* Left side - Back button */}
         <div className="flex items-center gap-2 sm:gap-4">
           <Link to="/">
-            <Button variant="ghost" className="flex items-center gap-2 px-2 sm:px-4 py-2 text-app-text border border-app-border hover:bg-app-border/20">
+            <Button
+              variant="ghost"
+              className="flex items-center gap-2 px-2 sm:px-4 py-2 text-app-text border border-app-border hover:bg-app-border/20"
+            >
               <div className="flex items-center justify-center w-4 h-4 p-2 border border-app-border rounded-lg bg-app-bg">
                 <ChevronLeft className="w-4 h-4" />
               </div>
@@ -39,10 +42,8 @@ export default function Layout({ children }: LayoutProps) {
           Get Started
         </Button>
       </header>
-      
-      <main className="flex-1">
-        {children}
-      </main>
+
+      <main className="flex-1">{children}</main>
     </div>
   );
 }

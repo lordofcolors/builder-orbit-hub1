@@ -10,7 +10,10 @@ interface EmojiInputToggleProps {
 
 const reactionEmojis = ["😀", "👍", "❤️", "🎉"];
 
-export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInputToggleProps) {
+export default function EmojiInputToggle({
+  onMessageSend,
+  onReaction,
+}: EmojiInputToggleProps) {
   const [isEmojiMode, setIsEmojiMode] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -45,24 +48,24 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                 size="sm"
                 className="w-12 h-10 p-0 bg-app-bg border border-app-border hover:bg-app-border/20 flex-shrink-0 transition-all duration-300"
               >
-                <img 
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2Ff8da714f740c49d1a3800b261a7df4c9?format=webp&width=800" 
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2Ff8da714f740c49d1a3800b261a7df4c9?format=webp&width=800"
                   alt="Emoji reactions"
                   className="w-6 h-6 object-contain"
                 />
               </Button>
-              
+
               <div className="flex-1">
                 <Input
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Type something here"
                   className="w-full bg-app-bg border-app-border text-app-text placeholder:text-app-muted h-10"
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                 />
               </div>
-              
-              <Button 
+
+              <Button
                 onClick={handleSendMessage}
                 className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4 flex-shrink-0"
               >
@@ -78,8 +81,8 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                 size="sm"
                 className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in fade-in slide-in-from-left"
                 style={{
-                  animationDuration: '500ms',
-                  animationFillMode: 'backwards'
+                  animationDuration: "500ms",
+                  animationFillMode: "backwards",
                 }}
               >
                 <X className="w-4 h-4" />
@@ -95,8 +98,8 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                     className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-500 rounded-full animate-in fade-in slide-in-from-bottom"
                     style={{
                       animationDelay: `${index * 150}ms`,
-                      animationDuration: '600ms',
-                      animationFillMode: 'backwards'
+                      animationDuration: "600ms",
+                      animationFillMode: "backwards",
                     }}
                   >
                     {emoji}
@@ -110,8 +113,8 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                 size="sm"
                 className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in fade-in slide-in-from-right"
                 style={{
-                  animationDuration: '800ms',
-                  animationFillMode: 'backwards'
+                  animationDuration: "800ms",
+                  animationFillMode: "backwards",
                 }}
               >
                 <Keyboard className="w-5 h-5" />
