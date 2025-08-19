@@ -9,7 +9,9 @@ import {
   Minus,
   Plus,
   Maximize,
-  Send
+  Send,
+  Mic,
+  MicOff
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -29,6 +31,8 @@ interface Reaction {
 export default function Conversation() {
   const [transcriptExpanded, setTranscriptExpanded] = useState(false);
   const [reactions, setReactions] = useState<Reaction[]>([]);
+  const [isAgentMuted, setIsAgentMuted] = useState(false);
+  const [isUserMuted, setIsUserMuted] = useState(false);
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([
     {
       id: "1",
@@ -94,6 +98,15 @@ export default function Conversation() {
               className="w-full h-full object-cover"
             />
           </div>
+
+          {/* Agent Mute Toggle */}
+          <Button
+            onClick={() => setIsAgentMuted(!isAgentMuted)}
+            size="sm"
+            className="absolute -top-2 -right-2 w-8 h-8 p-0 bg-black/70 text-white hover:bg-black/90 rounded-full border-2 border-white"
+          >
+            {isAgentMuted ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+          </Button>
         </div>
       </div>
 
