@@ -30,7 +30,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
             />
           </div>
           
-          <Link to="/fullscreen">
+          <Link to="/fullscreen?user=you">
             <Button
               size="sm"
               className="absolute top-2 right-2 w-7 h-7 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -69,7 +69,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
             <div className="absolute bottom-2 left-2 text-xs bg-black/70 text-white px-2 py-1 rounded">You</div>
             
             {/* Controls for You feed only */}
-            <Link to="/fullscreen">
+            <Link to="/fullscreen?user=you">
               <Button
                 size="sm"
                 className="absolute top-2 right-2 w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -101,7 +101,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
             <div className="absolute bottom-2 left-2 text-xs bg-black/70 text-white px-2 py-1 rounded">User 2</div>
             
             {/* Expand button for User 2 */}
-            <Link to="/fullscreen">
+            <Link to="/fullscreen?user=user2">
               <Button
                 size="sm"
                 className="absolute top-2 right-2 w-6 h-6 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -132,7 +132,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">You</div>
               
               {/* Controls for You feed only */}
-              <Link to="/fullscreen">
+              <Link to="/fullscreen?user=you">
                 <Button
                   size="sm"
                   className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -160,7 +160,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 2</div>
               
               {/* Expand button for User 2 */}
-              <Link to="/fullscreen">
+              <Link to="/fullscreen?user=user2">
                 <Button
                   size="sm"
                   className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -180,7 +180,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 3</div>
               
               {/* Expand button for User 3 */}
-              <Link to="/fullscreen">
+              <Link to="/fullscreen?user=user3">
                 <Button
                   size="sm"
                   className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
@@ -200,7 +200,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
               <div className="absolute bottom-1 left-1 text-xs bg-black/70 text-white px-1 rounded">User 4</div>
               
               {/* Expand button for User 4 */}
-              <Link to="/fullscreen">
+              <Link to="/fullscreen?user=user4">
                 <Button
                   size="sm"
                   className="absolute top-1 right-1 w-5 h-5 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
