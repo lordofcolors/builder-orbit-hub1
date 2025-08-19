@@ -185,12 +185,12 @@ export default function Conversation() {
         {/* Right side - Chat */}
         <div className="w-1/3 border-l border-app-border flex flex-col bg-app-bg h-full">
           {/* Chat header */}
-          <div className="p-2 border-b border-app-border flex-shrink-0 bg-app-bg">
+          <div className="p-3 border-b border-app-border flex-shrink-0 bg-app-bg">
             <h3 className="text-lg font-medium text-app-text">Live Chat</h3>
           </div>
 
           {/* Chat messages - Fixed height to ensure input is always visible */}
-          <div className="h-80 overflow-y-auto p-2 space-y-2 bg-app-bg">
+          <div className="h-96 overflow-y-auto p-3 space-y-3 bg-app-bg">
             {transcript.map((message) => (
               <div key={message.id} className={`flex ${
                 message.type === 'agent' ? 'justify-start' : 'justify-end'
