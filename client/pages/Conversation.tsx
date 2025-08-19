@@ -95,12 +95,14 @@ export default function Conversation() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-app-bg">
+    <div className="h-screen bg-app-bg flex flex-col overflow-hidden">
       {/* Agent Avatar */}
-      <div className="flex justify-center py-6">
+      <div className="flex justify-center py-3">
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
-          <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden">
+          <div className={`relative rounded-full overflow-hidden transition-all duration-300 ${
+            transcriptExpanded ? 'w-20 h-20' : 'w-24 h-24 sm:w-28 sm:h-28'
+          }`}>
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800"
               alt="Voice Agent Avatar"
