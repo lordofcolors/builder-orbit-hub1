@@ -194,33 +194,39 @@ export default function Conversation() {
                     Live Transcript
                   </h3>
                 </div>
-                <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+                <div className="flex-1 overflow-y-auto space-y-4 pr-2">
                   {transcript.map((message) => (
-                    <div key={message.id} className="flex gap-2">
-                      <div className="text-xs text-app-muted font-mono w-16 flex-shrink-0 pt-1">
-                        {message.timestamp.split(" ")[0]}
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm">
+                    <div key={message.id} className={`flex ${
+                      message.type === 'agent' ? 'justify-start' : 'justify-end'
+                    }`}>
+                      <div className={`max-w-[80%] ${
+                        message.type === 'agent' ? 'text-left' : 'text-right'
+                      }`}>
+                        <div className="text-sm mb-1">
                           <span
                             className={`font-medium ${
                               message.type === "agent"
                                 ? "text-app-agent"
-                                : "text-app-user"
+                                : "text-app-primary"
                             }`}
                           >
                             {message.type === "agent" ? "Assistant:" : "You:"}
                           </span>
                         </div>
                         <p
-                          className={`text-sm mt-1 ${
+                          className={`text-sm ${
                             message.type === "agent"
                               ? "text-app-agent"
-                              : "text-app-text"
+                              : "text-app-primary"
                           }`}
                         >
                           {message.content}
                         </p>
+                        <div className={`text-xs text-app-muted font-mono mt-1 ${
+                          message.type === 'agent' ? 'text-left' : 'text-right'
+                        }`}>
+                          {message.timestamp.split(" ")[0]}
+                        </div>
                       </div>
                     </div>
                   ))}
