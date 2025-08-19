@@ -1,13 +1,34 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import VideoModeDropdown, { VideoMode } from "@/components/VideoModeDropdown";
+import { createContext, useContext, useState } from "react";
+
+// Video Mode Context
+const VideoModeContext = createContext<{
+  videoMode: VideoMode;
+  setVideoMode: (mode: VideoMode) => void;
+}>({ videoMode: "single", setVideoMode: () => {} });
+
+export const useVideoMode = () => useContext(VideoModeContext);
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+export function VideoModeProvider({ children }: { children: React.ReactNode }) {
+  const [videoMode, setVideoMode] = useState<VideoMode>("single");
+
+  return (
+    <VideoModeContext.Provider value={{ videoMode, setVideoMode }}>
+      {children}
+    </VideoModeContext.Provider>
+  );
+}
+
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
+  const { videoMode, setVideoMode } = useVideoMode();
 
   return (
     <div className="min-h-screen bg-app-bg text-app-text">
@@ -37,10 +58,16 @@ export default function Layout({ children }: LayoutProps) {
           </nav>
         </div>
 
-        {/* Right side - Get Started button */}
-        <Button className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 px-3 sm:px-4 py-2 text-sm">
-          Get Started
-        </Button>
+        {/* Right side - Video Mode Dropdown + Get Started button */}
+        <div className="flex items-center gap-3">
+          <VideoModeDropdown
+            currentMode={videoMode}
+            onModeChange={setVideoMode}
+          />
+          <Button className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 px-3 sm:px-4 py-2 text-sm">
+            Get Started
+          </Button>
+        </div>
       </header>
 
       <main className="flex-1">{children}</main>
