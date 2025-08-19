@@ -104,7 +104,7 @@ export default function Conversation() {
         {/* Left side - Avatar, Videos and controls */}
         <div className="w-2/3 flex flex-col bg-app-bg">
           {/* Agent Avatar */}
-          <div className="flex justify-center py-3 flex-shrink-0">
+          <div className="flex justify-center py-1 flex-shrink-0">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
               <div className="relative w-28 h-28 rounded-full overflow-hidden">
@@ -131,7 +131,7 @@ export default function Conversation() {
           </div>
 
           {/* Video Feed */}
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex items-center justify-center py-1">
             <VideoFeed
               mode={videoMode}
               transcriptExpanded={false}
@@ -141,7 +141,7 @@ export default function Conversation() {
           </div>
 
           {/* Control Buttons */}
-          <div className="flex justify-center gap-6 py-2 px-4 flex-shrink-0 bg-app-bg">
+          <div className="flex justify-center gap-6 py-1 px-4 flex-shrink-0 bg-app-bg">
             <div className="flex flex-col items-center">
               <Button
                 size="lg"
