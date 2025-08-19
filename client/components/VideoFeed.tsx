@@ -117,7 +117,7 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
 
   if (mode === "quad") {
     return (
-      <div className="flex justify-center mb-4 px-4">
+      <div className="flex justify-center px-4">
         <div className="relative">
           <div className={`grid grid-cols-2 gap-4 transition-all duration-300 ${
             transcriptExpanded ? 'w-60 h-48' : 'w-80 h-64 sm:w-96 sm:h-72 md:w-[400px] md:h-80'
