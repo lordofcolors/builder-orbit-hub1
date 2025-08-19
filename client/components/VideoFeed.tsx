@@ -119,8 +119,8 @@ export default function VideoFeed({ mode, transcriptExpanded, isUserMuted, setIs
     return (
       <div className="flex justify-center mb-4 px-4">
         <div className="relative">
-          <div className={`grid grid-cols-2 gap-3 transition-all duration-300 ${
-            transcriptExpanded ? 'w-48 h-36' : 'w-64 h-48 sm:w-80 sm:h-60 md:w-96 md:h-72'
+          <div className={`grid grid-cols-2 gap-4 transition-all duration-300 ${
+            transcriptExpanded ? 'w-60 h-48' : 'w-80 h-64 sm:w-96 sm:h-72 md:w-[400px] md:h-80'
           }`}>
             {/* User 1 (You) */}
             <div className="relative bg-gray-800 rounded-lg overflow-hidden border border-app-border">
