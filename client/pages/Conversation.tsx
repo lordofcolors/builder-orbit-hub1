@@ -233,26 +233,26 @@ export default function Conversation() {
 
                   {/* Show recent reactions */}
                   {reactions.length > 0 && (
-                    <div className="flex gap-2 mt-4">
-                      <div className="text-xs text-app-muted font-mono w-16 flex-shrink-0 pt-1">
-                        {
-                          reactions[reactions.length - 1]?.timestamp.split(
-                            " ",
-                          )[0]
-                        }
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm">
-                          <span className="font-medium text-app-user">
+                    <div className="flex justify-end">
+                      <div className="max-w-[80%] text-right">
+                        <div className="text-sm mb-1">
+                          <span className="font-medium text-app-primary">
                             Your Reaction:
                           </span>
                         </div>
-                        <div className="flex gap-1 mt-1">
+                        <div className="flex gap-1 justify-end">
                           {reactions.slice(-3).map((reaction) => (
                             <span key={reaction.id} className="text-lg">
                               {reaction.emoji}
                             </span>
                           ))}
+                        </div>
+                        <div className="text-xs text-app-muted font-mono mt-1 text-right">
+                          {
+                            reactions[reactions.length - 1]?.timestamp.split(
+                              " ",
+                            )[0]
+                          }
                         </div>
                       </div>
                     </div>
