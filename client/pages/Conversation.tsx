@@ -185,12 +185,12 @@ export default function Conversation() {
         {/* Right side - Chat */}
         <div className="w-1/3 border-l border-app-border flex flex-col bg-app-bg h-full">
           {/* Chat header */}
-          <div className="p-3 border-b border-app-border flex-shrink-0 bg-app-bg">
+          <div className="p-2 border-b border-app-border flex-shrink-0 bg-app-bg">
             <h3 className="text-lg font-medium text-app-text">Live Chat</h3>
           </div>
 
-          {/* Chat messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-app-bg">
+          {/* Chat messages - Fixed height to ensure input is always visible */}
+          <div className="h-80 overflow-y-auto p-2 space-y-2 bg-app-bg">
             {transcript.map((message) => (
               <div key={message.id} className={`flex ${
                 message.type === 'agent' ? 'justify-start' : 'justify-end'
@@ -198,7 +198,7 @@ export default function Conversation() {
                 <div className={`max-w-[85%] ${
                   message.type === 'agent' ? 'text-left' : 'text-right'
                 }`}>
-                  <div className={`rounded-lg p-3 ${
+                  <div className={`rounded-lg p-2 ${
                     message.type === 'agent'
                       ? 'bg-app-border text-app-agent'
                       : 'bg-app-primary text-app-bg'
@@ -236,7 +236,7 @@ export default function Conversation() {
           </div>
 
           {/* Chat input */}
-          <div className="p-3 border-t border-app-border flex-shrink-0 bg-app-bg">
+          <div className="p-2 border-t border-app-border flex-shrink-0 bg-app-bg">
             <EmojiInputToggle
               onMessageSend={handleMessageSend}
               onReaction={handleReaction}
