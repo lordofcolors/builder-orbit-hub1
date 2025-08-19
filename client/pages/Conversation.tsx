@@ -190,7 +190,7 @@ export default function Conversation() {
           </div>
 
           {/* Chat messages - Fixed height to ensure input is always visible */}
-          <div className="h-96 overflow-y-auto p-3 space-y-3 bg-app-bg">
+          <div className="h-[34rem] overflow-y-auto p-3 space-y-3 bg-app-bg">
             {transcript.map((message) => (
               <div key={message.id} className={`flex ${
                 message.type === 'agent' ? 'justify-start' : 'justify-end'
