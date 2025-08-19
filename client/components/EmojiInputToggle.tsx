@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, Keyboard } from "lucide-react";
+import { Send, Keyboard, X } from "lucide-react";
 
 interface EmojiInputToggleProps {
   onMessageSend: (message: string) => void;
