@@ -236,7 +236,7 @@ export default function Conversation() {
           </div>
 
           {/* Chat input */}
-          <div className="p-2 border-t border-app-border flex-shrink-0 bg-app-bg">
+          <div className="p-3 border-t border-app-border flex-shrink-0 bg-app-bg">
             <EmojiInputToggle
               onMessageSend={handleMessageSend}
               onReaction={handleReaction}
