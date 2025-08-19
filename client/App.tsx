@@ -12,7 +12,7 @@ import Conversation from "./pages/Conversation";
 import Fullscreen from "./pages/Fullscreen";
 import SessionEnd from "./pages/SessionEnd";
 import NotFound from "./pages/NotFound";
-import Layout from "./components/Layout";
+import Layout, { VideoModeProvider } from "./components/Layout";
 
 const queryClient = new QueryClient();
 
@@ -21,8 +21,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
+      <VideoModeProvider>
+        <BrowserRouter>
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route
             path="/pre-call"
@@ -51,8 +52,9 @@ const App = () => (
           />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </VideoModeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
