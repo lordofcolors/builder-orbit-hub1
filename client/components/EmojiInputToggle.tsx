@@ -70,16 +70,25 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
               </Button>
             </div>
           ) : (
-            // Emoji Mode: Emojis expanding from left + keyboard button on right
-            <div className="flex items-center justify-between">
-              {/* Emojis expanding from left where trigger button was */}
-              <div className="flex gap-4 justify-start">
+            // Emoji Mode: Close button on left, centered emojis, keyboard on right
+            <div className="flex items-center justify-between w-full">
+              {/* Close button on far left */}
+              <Button
+                onClick={toggleToInput}
+                size="sm"
+                className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in slide-in-from-left duration-300"
+              >
+                <X className="w-4 h-4" />
+              </Button>
+
+              {/* Centered emojis */}
+              <div className="flex gap-4 justify-center flex-1">
                 {reactionEmojis.map((emoji, index) => (
                   <Button
                     key={index}
                     onClick={() => handleReaction(emoji)}
                     size="lg"
-                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-300 rounded-full animate-in slide-in-from-left"
+                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-300 rounded-full animate-in slide-in-from-bottom"
                     style={{
                       animationDelay: `${index * 50}ms`,
                       animationDuration: '200ms'
@@ -89,12 +98,15 @@ export default function EmojiInputToggle({ onMessageSend, onReaction }: EmojiInp
                   </Button>
                 ))}
               </div>
-              
+
               {/* Keyboard button expanding from right */}
               <Button
                 onClick={toggleToInput}
                 size="sm"
-                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in slide-in-from-right duration-200"
+                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in slide-in-from-right"
+                style={{
+                  animationDuration: '800ms'
+                }}
               >
                 <Keyboard className="w-5 h-5" />
               </Button>
