@@ -103,9 +103,9 @@ export default function Conversation() {
           <Button
             onClick={() => setIsAgentMuted(!isAgentMuted)}
             size="sm"
-            className="absolute -top-2 -right-2 w-8 h-8 p-0 bg-black/70 text-white hover:bg-black/90 rounded-full border-2 border-white"
+            className="absolute top-0 -right-1 w-7 h-7 p-0 bg-app-bg/80 text-app-agent hover:bg-app-bg/90 rounded-full border border-app-border"
           >
-            {isAgentMuted ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+            {isAgentMuted ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
           </Button>
         </div>
       </div>
