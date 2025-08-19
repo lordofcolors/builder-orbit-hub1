@@ -126,9 +126,11 @@ export default function Conversation() {
       </div>
 
       {/* Video Feed */}
-      <div className="flex justify-center mb-6 px-4">
+      <div className="flex justify-center mb-4 px-4">
         <div className="relative">
-          <div className="w-80 h-48 sm:w-[400px] sm:h-[225px] bg-gray-800 rounded-lg overflow-hidden border border-app-border">
+          <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
+            transcriptExpanded ? 'w-64 h-36' : 'w-80 h-48 sm:w-[400px] sm:h-[225px]'
+          }`}>
             {/* Live video feed */}
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F10c3ed330bcf4e15bf2a52fe283ec99f?format=webp&width=800"
@@ -141,9 +143,9 @@ export default function Conversation() {
           <Link to="/fullscreen">
             <Button
               size="sm"
-              className="absolute top-2 right-2 w-8 h-8 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+              className="absolute top-2 right-2 w-7 h-7 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
             >
-              <Maximize className="w-4 h-4" />
+              <Maximize className="w-3 h-3" />
             </Button>
           </Link>
 
@@ -151,12 +153,12 @@ export default function Conversation() {
           <Button
             onClick={() => setIsUserMuted(!isUserMuted)}
             size="sm"
-            className="absolute bottom-2 right-2 w-8 h-8 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+            className="absolute bottom-2 right-2 w-7 h-7 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
           >
             {isUserMuted ? (
-              <MicOff className="w-4 h-4" />
+              <MicOff className="w-3 h-3" />
             ) : (
-              <Mic className="w-4 h-4" />
+              <Mic className="w-3 h-3" />
             )}
           </Button>
         </div>
