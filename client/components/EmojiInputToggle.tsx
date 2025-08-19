@@ -16,7 +16,6 @@ export default function EmojiInputToggle({
 }: EmojiInputToggleProps) {
   const [isEmojiMode, setIsEmojiMode] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleSendMessage = () => {
     if (inputMessage.trim()) {
@@ -30,19 +29,11 @@ export default function EmojiInputToggle({
   };
 
   const toggleToEmoji = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIsEmojiMode(true);
-      setTimeout(() => setIsTransitioning(false), 400);
-    }, 100);
+    setIsEmojiMode(true);
   };
 
   const toggleToInput = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIsEmojiMode(false);
-      setTimeout(() => setIsTransitioning(false), 400);
-    }, 100);
+    setIsEmojiMode(false);
   };
 
   return (
@@ -51,15 +42,11 @@ export default function EmojiInputToggle({
         <div className="relative h-16">
           {!isEmojiMode ? (
             // Input Mode: [Emoji Button] [Input Field] [Send Button]
-            <div className={`flex gap-3 items-center transition-all duration-500 ease-out ${
-              isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-            }`}>
+            <div className="flex gap-3 items-center">
               <Button
                 onClick={toggleToEmoji}
                 size="sm"
-                className={`w-12 h-10 p-0 bg-app-bg border border-app-border hover:bg-app-border/20 flex-shrink-0 transition-all duration-300 ${
-                  isTransitioning ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
-                }`}
+                className="w-12 h-10 p-0 bg-app-bg border border-app-border hover:bg-app-border/20 flex-shrink-0"
               >
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2Ff8da714f740c49d1a3800b261a7df4c9?format=webp&width=800"
@@ -68,23 +55,20 @@ export default function EmojiInputToggle({
                 />
               </Button>
 
-              <div className={`flex-1 transition-all duration-500 ease-out origin-left ${
-                isTransitioning ? 'transform scale-x-0 opacity-0' : 'transform scale-x-100 opacity-100'
-              }`}>
+              <div className="flex-1 animate-in slide-in-from-right duration-700 fill-mode-both">
                 <Input
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Type something here"
                   className="w-full bg-app-bg border-app-border text-app-text placeholder:text-app-muted h-10"
                   onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                  autoFocus
                 />
               </div>
 
               <Button
                 onClick={handleSendMessage}
-                className={`bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4 flex-shrink-0 transition-all duration-500 ease-out ${
-                  isTransitioning ? 'transform scale-75 opacity-0' : 'transform scale-100 opacity-100'
-                }`}
+                className="bg-app-primary text-app-primary-dark hover:bg-app-primary/90 h-10 px-4 flex-shrink-0 animate-in slide-in-from-right duration-700 delay-200 fill-mode-both"
               >
                 <Send className="w-4 h-4" />
               </Button>
@@ -96,11 +80,7 @@ export default function EmojiInputToggle({
               <Button
                 onClick={toggleToInput}
                 size="sm"
-                className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in fade-in slide-in-from-left"
-                style={{
-                  animationDuration: "400ms",
-                  animationFillMode: "backwards",
-                }}
+                className="w-10 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 rounded-full animate-in fade-in slide-in-from-left duration-400 fill-mode-both"
               >
                 <X className="w-4 h-4" />
               </Button>
@@ -112,11 +92,10 @@ export default function EmojiInputToggle({
                     key={index}
                     onClick={() => handleReaction(emoji)}
                     size="lg"
-                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-500 rounded-full animate-in fade-in slide-in-from-bottom"
+                    className="w-12 h-12 p-0 text-xl bg-app-bg border border-app-border hover:bg-app-border/20 hover:scale-110 transition-all duration-500 rounded-full animate-in fade-in slide-in-from-bottom fill-mode-both"
                     style={{
                       animationDelay: `${index * 120}ms`,
                       animationDuration: "480ms",
-                      animationFillMode: "backwards",
                     }}
                   >
                     {emoji}
@@ -128,11 +107,7 @@ export default function EmojiInputToggle({
               <Button
                 onClick={toggleToInput}
                 size="sm"
-                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in fade-in slide-in-from-right"
-                style={{
-                  animationDuration: "640ms",
-                  animationFillMode: "backwards",
-                }}
+                className="w-12 h-10 p-0 bg-app-bg border border-app-border text-app-text hover:bg-app-border/20 flex-shrink-0 animate-in fade-in slide-in-from-right duration-640 fill-mode-both"
               >
                 <Keyboard className="w-5 h-5" />
               </Button>
