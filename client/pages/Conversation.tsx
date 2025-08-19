@@ -285,7 +285,7 @@ export default function Conversation() {
       />
 
       {/* Control Buttons */}
-      <div className="flex justify-center gap-4 sm:gap-8 pb-8 px-4 bg-app-bg">
+      <div className="flex justify-center gap-4 sm:gap-8 py-4 px-4 bg-app-bg flex-shrink-0">
         <div className="flex flex-col items-center">
           <Button
             size="lg"
