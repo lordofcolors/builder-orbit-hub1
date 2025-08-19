@@ -100,150 +100,147 @@ export default function Conversation() {
   // Special layout for 4-user mode
   if (videoMode === "quad") {
     return (
-      <div className="h-screen bg-app-bg flex flex-col overflow-hidden">
-        {/* Agent Avatar */}
-        <div className="flex justify-center py-2 flex-shrink-0">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
-            <div className="relative w-24 h-24 rounded-full overflow-hidden">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800"
-                alt="Voice Agent Avatar"
-                className="w-full h-full object-cover"
-              />
+      <div className="h-screen bg-app-bg flex overflow-hidden">
+        {/* Left side - Avatar, Videos and controls */}
+        <div className="w-2/3 flex flex-col bg-app-bg">
+          {/* Agent Avatar */}
+          <div className="flex justify-center py-3 flex-shrink-0">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-app-primary to-cyan-400 blur-lg opacity-60 animate-pulse"></div>
+              <div className="relative w-28 h-28 rounded-full overflow-hidden">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fe9588cc2e48046eda97120fbe07da119%2F13a19102fc4945c783f457401a61da3a?format=webp&width=800"
+                  alt="Voice Agent Avatar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Agent Mute Toggle */}
+              <Button
+                onClick={() => setIsAgentMuted(!isAgentMuted)}
+                size="sm"
+                className="absolute top-0 -right-1 w-6 h-6 p-0 bg-app-bg/80 text-app-agent hover:bg-app-bg/90 rounded-full border border-app-border"
+              >
+                {isAgentMuted ? (
+                  <MicOff className="w-2 h-2" />
+                ) : (
+                  <Mic className="w-2 h-2" />
+                )}
+              </Button>
+            </div>
+          </div>
+
+          {/* Video Feed */}
+          <div className="flex-1 flex items-center justify-center">
+            <VideoFeed
+              mode={videoMode}
+              transcriptExpanded={false}
+              isUserMuted={isUserMuted}
+              setIsUserMuted={setIsUserMuted}
+            />
+          </div>
+
+          {/* Control Buttons */}
+          <div className="flex justify-center gap-6 py-2 px-4 flex-shrink-0 bg-app-bg">
+            <div className="flex flex-col items-center">
+              <Button
+                size="lg"
+                className="w-10 h-10 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-1 p-0 flex items-center justify-center"
+              >
+                <Monitor className="w-4 h-4" />
+              </Button>
+              <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                Share Screen
+              </p>
             </div>
 
-            {/* Agent Mute Toggle */}
-            <Button
-              onClick={() => setIsAgentMuted(!isAgentMuted)}
-              size="sm"
-              className="absolute top-0 -right-1 w-6 h-6 p-0 bg-app-bg/80 text-app-agent hover:bg-app-bg/90 rounded-full border border-app-border"
-            >
-              {isAgentMuted ? (
-                <MicOff className="w-2 h-2" />
-              ) : (
-                <Mic className="w-2 h-2" />
-              )}
-            </Button>
+            <div className="flex flex-col items-center">
+              <Link to="/session-end">
+                <Button
+                  size="lg"
+                  className="w-10 h-10 rounded-full bg-red-600 text-white hover:bg-red-700 border border-red-600 mb-1 p-0 flex items-center justify-center"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </Link>
+              <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                Disconnect
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <Button
+                size="lg"
+                className="w-10 h-10 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-1 p-0 flex items-center justify-center"
+              >
+                <Camera className="w-4 h-4" />
+              </Button>
+              <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
+                Stop Camera
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Main content area with videos on left and chat on right */}
-        <div className="flex-1 flex min-h-0">
-          {/* Left side - Videos and controls */}
-          <div className="w-2/3 flex flex-col bg-app-bg">
-            {/* Video Feed */}
-            <div className="flex-1 flex items-center justify-center py-4">
-              <VideoFeed
-                mode={videoMode}
-                transcriptExpanded={false}
-                isUserMuted={isUserMuted}
-                setIsUserMuted={setIsUserMuted}
-              />
-            </div>
-
-            {/* Control Buttons */}
-            <div className="flex justify-center gap-4 sm:gap-8 py-3 px-4 flex-shrink-0 bg-app-bg">
-              <div className="flex flex-col items-center">
-                <Button
-                  size="lg"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
-                >
-                  <Monitor className="w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
-                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
-                  Share Screen
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <Link to="/session-end">
-                  <Button
-                    size="lg"
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600 text-white hover:bg-red-700 border border-red-600 mb-2 p-0 flex items-center justify-center"
-                  >
-                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </Button>
-                </Link>
-                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
-                  Disconnect
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <Button
-                  size="lg"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-app-border text-app-text hover:bg-app-muted/20 border border-app-border mb-2 p-0 flex items-center justify-center"
-                >
-                  <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
-                <p className="text-xs uppercase tracking-wider text-app-text font-medium text-center">
-                  Stop Camera
-                </p>
-              </div>
-            </div>
+        {/* Right side - Chat */}
+        <div className="w-1/3 border-l border-app-border flex flex-col bg-app-bg h-full">
+          {/* Chat header */}
+          <div className="p-3 border-b border-app-border flex-shrink-0 bg-app-bg">
+            <h3 className="text-lg font-medium text-app-text">Live Chat</h3>
           </div>
 
-          {/* Right side - Chat */}
-          <div className="w-1/3 border-l border-app-border flex flex-col bg-app-bg">
-            {/* Chat header */}
-            <div className="p-4 border-b border-app-border flex-shrink-0 bg-app-bg">
-              <h3 className="text-lg font-medium text-app-text">Live Chat</h3>
-            </div>
-
-            {/* Chat messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-app-bg">
-              {transcript.map((message) => (
-                <div key={message.id} className={`flex ${
-                  message.type === 'agent' ? 'justify-start' : 'justify-end'
+          {/* Chat messages */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-app-bg">
+            {transcript.map((message) => (
+              <div key={message.id} className={`flex ${
+                message.type === 'agent' ? 'justify-start' : 'justify-end'
+              }`}>
+                <div className={`max-w-[85%] ${
+                  message.type === 'agent' ? 'text-left' : 'text-right'
                 }`}>
-                  <div className={`max-w-[85%] ${
+                  <div className={`rounded-lg p-3 ${
+                    message.type === 'agent'
+                      ? 'bg-app-border text-app-agent'
+                      : 'bg-app-primary text-app-bg'
+                  }`}>
+                    <p className="text-sm">{message.content}</p>
+                  </div>
+                  <div className={`text-xs text-app-muted font-mono mt-1 ${
                     message.type === 'agent' ? 'text-left' : 'text-right'
                   }`}>
-                    <div className={`rounded-lg p-3 ${
-                      message.type === 'agent'
-                        ? 'bg-app-border text-app-agent'
-                        : 'bg-app-primary text-app-bg'
-                    }`}>
-                      <p className="text-sm">{message.content}</p>
-                    </div>
-                    <div className={`text-xs text-app-muted font-mono mt-1 ${
-                      message.type === 'agent' ? 'text-left' : 'text-right'
-                    }`}>
-                      {message.timestamp.split(" ")[0]}
-                    </div>
+                    {message.timestamp.split(" ")[0]}
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
 
-              {/* Show recent reactions */}
-              {reactions.length > 0 && (
-                <div className="flex justify-end">
-                  <div className="max-w-[85%] text-right">
-                    <div className="bg-app-primary text-app-bg rounded-lg p-2">
-                      <div className="flex gap-1 justify-end">
-                        {reactions.slice(-3).map((reaction) => (
-                          <span key={reaction.id} className="text-lg">
-                            {reaction.emoji}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="text-xs text-app-muted font-mono mt-1 text-right">
-                      {reactions[reactions.length - 1]?.timestamp.split(" ")[0]}
+            {/* Show recent reactions */}
+            {reactions.length > 0 && (
+              <div className="flex justify-end">
+                <div className="max-w-[85%] text-right">
+                  <div className="bg-app-primary text-app-bg rounded-lg p-2">
+                    <div className="flex gap-1 justify-end">
+                      {reactions.slice(-3).map((reaction) => (
+                        <span key={reaction.id} className="text-lg">
+                          {reaction.emoji}
+                        </span>
+                      ))}
                     </div>
                   </div>
+                  <div className="text-xs text-app-muted font-mono mt-1 text-right">
+                    {reactions[reactions.length - 1]?.timestamp.split(" ")[0]}
+                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+          </div>
 
-            {/* Chat input */}
-            <div className="p-4 border-t border-app-border flex-shrink-0 bg-app-bg">
-              <EmojiInputToggle
-                onMessageSend={handleMessageSend}
-                onReaction={handleReaction}
-              />
-            </div>
+          {/* Chat input */}
+          <div className="p-3 border-t border-app-border flex-shrink-0 bg-app-bg">
+            <EmojiInputToggle
+              onMessageSend={handleMessageSend}
+              onReaction={handleReaction}
+            />
           </div>
         </div>
       </div>
