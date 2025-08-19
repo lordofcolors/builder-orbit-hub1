@@ -131,6 +131,15 @@ export default function Conversation() {
               <Maximize className="w-4 h-4" />
             </Button>
           </Link>
+
+          {/* User Mute button */}
+          <Button
+            onClick={() => setIsUserMuted(!isUserMuted)}
+            size="sm"
+            className="absolute bottom-2 right-2 w-8 h-8 p-0 bg-black/50 text-white hover:bg-black/70 rounded"
+          >
+            {isUserMuted ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+          </Button>
         </div>
       </div>
 
