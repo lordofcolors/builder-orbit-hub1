@@ -131,7 +131,7 @@ export default function Conversation() {
           </div>
 
           {/* Video Feed */}
-          <div className="flex items-center justify-center py-1">
+          <div className="flex items-center justify-center py-3">
             <VideoFeed
               mode={videoMode}
               transcriptExpanded={false}
@@ -141,7 +141,7 @@ export default function Conversation() {
           </div>
 
           {/* Control Buttons */}
-          <div className="flex justify-center gap-6 py-2 px-4 flex-shrink-0 bg-app-bg">
+          <div className="flex justify-center gap-6 py-4 px-4 flex-shrink-0 bg-app-bg">
             <div className="flex flex-col items-center">
               <Button
                 size="lg"
