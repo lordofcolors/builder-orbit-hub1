@@ -129,7 +129,7 @@ export default function Conversation() {
       <div className="flex justify-center mb-4 px-4">
         <div className="relative">
           <div className={`bg-gray-800 rounded-lg overflow-hidden border border-app-border transition-all duration-300 ${
-            transcriptExpanded ? 'w-64 h-36' : 'w-80 h-48 sm:w-[400px] sm:h-[225px]'
+            transcriptExpanded ? 'w-56 h-32 sm:w-64 sm:h-36' : 'w-72 h-40 sm:w-80 sm:h-48 md:w-[400px] md:h-[225px]'
           }`}>
             {/* Live video feed */}
             <img
